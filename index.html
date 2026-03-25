@@ -1,13 +1,164 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!doctype html>
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de usuário</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cadastro de Clientes</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
 </head>
 <body>
-    
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteudo principal</a>
+
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="brand-badge"></div>
+          <div class="brand-title">
+            <div class="name">Formulario de cadastro</div>
+            <div class="tagline">Seguimos as diretrizes de usabilidade da W3C</div>
+          </div>
+        </div>
+
+        <div class="tools">
+          <button class="nav-item" id="btn-diminuir" title="Diminuir fonte" aria-label="Diminuir tamanho da fonte">A-</button>
+          <button class="nav-item" id="btn-aumentar" title="Aumentar fonte" aria-label="Aumentar tamanho da fonte">A+</button>
+          <button class="nav-item" id="btn-contraste" title="Alternar modo alto contraste" aria-pressed="false">Contraste</button>
+          <span class="nav-item" aria-disabled="true">Pagina de cadastro</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p id="acessibilidade-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+
+  <main class="page" id="conteudo-principal">
+    <div class="container">
+      <div class="card form-card" id="cadastro-clientes">
+        <div class="card-pad">
+          <div class="kicker"><span class="dot"></span> Atendimento</div>
+          <div class="headline form-headline">Cadastro de clientes</div>
+          <p class="subhead form-subhead">
+            Preencha os dados abaixo para receber atendimento prioritario, novidades e historico de solicitacoes.
+          </p>
+
+          <form class="client-form" action="#" method="post" aria-labelledby="titulo-cadastro" aria-describedby="cadastro-ajuda">
+            <h2 class="sr-only" id="titulo-cadastro">Formulario de cadastro de clientes</h2>
+            <p class="form-helper" id="cadastro-ajuda">
+              Os campos marcados com asterisco sao obrigatorios. O formulario foi estruturado para navegacao por teclado e leitores de tela.
+            </p>
+
+            <fieldset class="form-fieldset">
+              <legend class="form-legend">Dados pessoais</legend>
+
+              <div class="form-grid">
+                <div class="form-group form-group-full">
+                  <label class="form-label" for="nome">Nome completo <span aria-hidden="true">*</span></label>
+                  <input class="form-input" id="nome" name="nome" type="text" autocomplete="name" required aria-describedby="nome-ajuda" />
+                  <p class="form-hint" id="nome-ajuda">Digite o nome da pessoa responsavel pelo cadastro.</p>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="email">E-mail <span aria-hidden="true">*</span></label>
+                  <input class="form-input" id="email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="email-ajuda" />
+                  <p class="form-hint" id="email-ajuda">Usado para envio de atualizacoes e confirmacao do cadastro.</p>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="telefone">Telefone <span aria-hidden="true">*</span></label>
+                  <input class="form-input" id="telefone" name="telefone" type="tel" autocomplete="tel" inputmode="tel" required aria-describedby="telefone-ajuda" placeholder="(11) 99999-9999" pattern="^\(\d{2}\)\s\d{4,5}-\d{4}$" />
+                  <p class="form-hint" id="telefone-ajuda">Informe o telefone com DDD no formato (11) 99999-9999.</p>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="cpf">CPF</label>
+                  <input class="form-input" id="cpf" name="cpf" type="text" autocomplete="off" inputmode="numeric" aria-describedby="cpf-ajuda" placeholder="000.000.000-00" pattern="^\d{3}\.\d{3}\.\d{3}-\d{2}$" />
+                  <p class="form-hint" id="cpf-ajuda">Campo opcional para identificacao do cliente no formato 000.000.000-00.</p>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="nascimento">Data de nascimento</label>
+                  <input class="form-input" id="nascimento" name="nascimento" type="text" inputmode="numeric" autocomplete="bday" placeholder="dd/mm/aaaa" aria-describedby="nascimento-ajuda" pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}$" />
+                  <p class="form-hint" id="nascimento-ajuda">Informe a data no formato dia/mes/ano, por exemplo: 25/03/2026.</p>
+                </div>
+
+                <div class="form-group form-group-full">
+                  <span class="form-label" id="sexo-label">Sexo</span>
+                  <div class="choice-group" role="radiogroup" aria-labelledby="sexo-label">
+                    <label class="choice-card">
+                      <input type="radio" name="sexo" value="masculino" />
+                      <span>Masculino</span>
+                    </label>
+                    <label class="choice-card">
+                      <input type="radio" name="sexo" value="feminino" />
+                      <span>Feminino</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-fieldset">
+              <legend class="form-legend">Preferencias de contato</legend>
+
+              <div class="form-grid">
+                <div class="form-group form-group-full">
+                  <span class="form-label" id="contato-preferido">Canal preferido</span>
+                  <div class="choice-group" role="radiogroup" aria-labelledby="contato-preferido">
+                    <label class="choice-card">
+                      <input type="radio" name="contato" value="email" checked />
+                      <span>E-mail</span>
+                    </label>
+                    <label class="choice-card">
+                      <input type="radio" name="contato" value="telefone" />
+                      <span>Telefone</span>
+                    </label>
+                    <label class="choice-card">
+                      <input type="radio" name="contato" value="whatsapp" />
+                      <span>WhatsApp</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group form-group-full">
+                  <label class="form-label" for="observacoes">Observacoes</label>
+                  <textarea class="form-input form-textarea" id="observacoes" name="observacoes" rows="4" aria-describedby="observacoes-ajuda"></textarea>
+                  <p class="form-hint" id="observacoes-ajuda">Se necessario, informe horarios de contato, recursos de acessibilidade ou detalhes importantes.</p>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-fieldset">
+              <legend class="form-legend">Consentimento</legend>
+
+              <div class="check-list" aria-describedby="consentimento-ajuda">
+                <label class="check-item">
+                  <input type="checkbox" name="novidades" />
+                  <span>Quero receber novidades e boletins por e-mail.</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" name="lgpd" required />
+                  <span>Autorizo o uso dos dados para fins de atendimento e gestao do cadastro. <strong>Obrigatorio.</strong></span>
+                </label>
+              </div>
+              <p class="form-hint" id="consentimento-ajuda">Voce pode atualizar suas preferencias a qualquer momento.</p>
+            </fieldset>
+
+            <div class="form-actions">
+              <button class="form-button form-button-primary" type="submit">Cadastrar cliente</button>
+              <button class="form-button form-button-secondary" type="reset">Limpar campos</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="container">
+          Portal Agora - Pagina demonstrativa para exercicios de acessibilidade - Cadastro em pagina dedicada
+        </div>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
