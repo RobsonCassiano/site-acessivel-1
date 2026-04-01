@@ -154,3 +154,139 @@ function formatarDataNascimento(valor) {
 aplicarMascara(campoTelefone, formatarTelefone);
 aplicarMascara(campoCpf, formatarCpf);
 aplicarMascara(campoNascimento, formatarDataNascimento);
+
+// Validação customizada para alertas em PT-BR e destaque de legendas
+const inputsObrigatorios = document.querySelectorAll('[required]');
+const formulario = document.querySelector('.client-form');
+
+inputsObrigatorios.forEach(input => {
+  input.addEventListener('invalid', function() {
+    this.setCustomValidity(""); // Limpa para reavaliar
+
+    if (this.validity.valueMissing) {
+      const label = document.querySelector(`label[for="${this.id}"]`);
+      // Extrai o nome do campo limpando marcações de obrigatoriedade
+      let nomeCampo = label ? label.innerText.replace(/\*|Obrigatorio\./g, '').trim() : "este campo";
+      this.setCustomValidity(`O campo "${nomeCampo}" é obrigatório.`);
+    }
+
+    const fieldset = this.closest('fieldset');
+    if (fieldset) {
+      const legend = fieldset.querySelector('.form-legend');
+      if (legend) legend.classList.add('invalid');
+    }
+  });
+
+  input.addEventListener('input', function() {
+    this.setCustomValidity("");
+    const fieldset = this.closest('fieldset');
+    if (fieldset && fieldset.querySelectorAll(':invalid').length === 0) {
+      const legend = fieldset.querySelector('.form-legend');
+      if (legend) legend.classList.remove('invalid');
+    }
+  });
+});
+
+if (formulario) {
+  formulario.addEventListener('reset', () => {
+    document.querySelectorAll('.form-legend.invalid').forEach(l => l.classList.remove('invalid'));
+  });
+}
+
+// Lógica para seleção de WhatsApp e Popup
+const radiosContato = document.querySelectorAll('input[name="contato"]');
+const modalWhatsapp = document.getElementById('modal-whatsapp');
+const inputWhatsappCustom = document.getElementById('whatsapp-numero');
+const btnConfirmarWhatsapp = document.getElementById('btn-confirmar-whatsapp');
+const btnCancelarWhatsapp = document.getElementById('btn-cancelar-whatsapp');
+let ultimoMetodoContato = 'email'; // Para reverter caso cancele
+
+radiosContato.forEach(radio => {
+  radio.addEventListener('click', (e) => {
+    if (radio.value === 'whatsapp') {
+      // Pergunta se é o mesmo número do formulário
+      const isSame = confirm("O número do WhatsApp é o mesmo telefone informado no cadastro?");
+      
+      if (!isSame) {
+        modalWhatsapp.hidden = false;
+        inputWhatsappCustom.focus();
+      } else {
+        ultimoMetodoContato = 'whatsapp';
+      }
+    } else {
+      ultimoMetodoContato = radio.value;
+    }
+  });
+});
+
+btnConfirmarWhatsapp.addEventListener('click', () => {
+  if (inputWhatsappCustom.value.length < 14) {
+    alert("Por favor, informe um número de celular válido.");
+    inputWhatsappCustom.focus();
+    return;
+  }
+  modalWhatsapp.hidden = true;
+  ultimoMetodoContato = 'whatsapp';
+  anunciarStatus("Número de WhatsApp personalizado registrado com sucesso.");
+});
+
+btnCancelarWhatsapp.addEventListener('click', () => {
+  modalWhatsapp.hidden = true;
+  // Reverte para o último método de contato válido
+  const anterior = document.querySelector(`input[name="contato"][value="${ultimoMetodoContato}"]`);
+  if (anterior) anterior.checked = true;
+});
+
+// Aplica a máscara de telefone também no campo do modal
+aplicarMascara(inputWhatsappCustom, formatarTelefone);
+
+// Lógica para Upload de Arquivos
+const uploadZone = document.getElementById('upload-zone');
+const inputAnexos = document.getElementById('anexos');
+const listaArquivos = document.getElementById('lista-arquivos');
+
+if (uploadZone && inputAnexos) {
+  // Clique na zona ativa o input
+  uploadZone.addEventListener('click', () => inputAnexos.click());
+  
+  // Teclado (Enter ou Space) ativa o input
+  uploadZone.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      inputAnexos.click();
+    }
+  });
+
+  // Drag and Drop
+  ['dragover', 'dragleave', 'drop'].forEach(eventName => {
+    uploadZone.addEventListener(eventName, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    });
+  });
+
+  uploadZone.addEventListener('dragover', () => uploadZone.classList.add('dragover'));
+  uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
+  
+  uploadZone.addEventListener('drop', (e) => {
+    uploadZone.classList.remove('dragover');
+    handleFiles(e.dataTransfer.files);
+  });
+
+  inputAnexos.addEventListener('change', () => {
+    handleFiles(inputAnexos.files);
+  });
+}
+
+function handleFiles(files) {
+  Array.from(files).forEach(file => {
+    const item = document.createElement('div');
+    item.className = 'file-item';
+    item.innerHTML = `
+      <span>${file.name} (${(file.size / 1024).toFixed(1)} KB)</span>
+      <button type="button" aria-label="Remover arquivo ${file.name}">&times;</button>
+    `;
+    item.querySelector('button').addEventListener('click', () => item.remove());
+    listaArquivos.appendChild(item);
+  });
+}
