@@ -204,7 +204,7 @@ let ultimoMetodoContato = 'email'; // Para reverter caso cancele
 radiosContato.forEach(radio => {
   radio.addEventListener('click', (e) => {
     if (radio.value === 'whatsapp') {
-      // Pergunta se é o mesmo número do formulário
+      // Mesmo número do formulário
       const isSame = confirm("O número do WhatsApp é o mesmo telefone informado no cadastro?");
       
       if (!isSame) {
@@ -288,5 +288,42 @@ function handleFiles(files) {
     `;
     item.querySelector('button').addEventListener('click', () => item.remove());
     listaArquivos.appendChild(item);
+  });
+}
+
+const filtroTipo = document.getElementById('filtro-tipo');
+const filtroValor = document.getElementById('filtro-valor');
+const btnBuscarClientes = document.getElementById('btn-buscar-clientes');
+const tabelaClientes = document.getElementById('tabela-clientes');
+
+function filtrarClientes() {
+  if (!filtroTipo || !filtroValor || !tabelaClientes) {
+    return;
+  }
+
+  const tipo = filtroTipo.value;
+  const termo = filtroValor.value.trim().toLowerCase();
+  const linhas = tabelaClientes.querySelectorAll('tbody tr');
+
+  linhas.forEach((linha) => {
+    const valorComparacao = (linha.dataset[tipo] || '').toLowerCase();
+    const deveExibir = termo === '' || valorComparacao.includes(termo);
+    linha.hidden = !deveExibir;
+  });
+
+  const descricaoBusca = termo ? `Filtro aplicado para ${tipo}: ${filtroValor.value}.` : 'Filtro de clientes removido.';
+  anunciarStatus(descricaoBusca);
+}
+
+if (btnBuscarClientes) {
+  btnBuscarClientes.addEventListener('click', filtrarClientes);
+}
+
+if (filtroValor) {
+  filtroValor.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      filtrarClientes();
+    }
   });
 }

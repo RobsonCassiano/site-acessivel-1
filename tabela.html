@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tabela de Clientes</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteudo principal</a>
+
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="brand-title">
+            <div class="name">Tabela de clientes</div>
+            <div class="tagline">Estrutura semantica com foco em acessibilidade e leitura assistiva</div>
+          </div>
+        </div>
+
+        <div class="tools">
+          <a class="nav-item" href="index.html">Pagina de cadastro</a>
+          <button class="nav-item" id="btn-diminuir" title="Diminuir fonte"
+            aria-label="Diminuir tamanho da fonte">A-</button>
+          <button class="nav-item" id="btn-aumentar" title="Aumentar fonte"
+            aria-label="Aumentar tamanho da fonte">A+</button>
+          <button class="nav-item" id="btn-contraste" title="Alternar modo alto contraste"
+            aria-pressed="false">Contraste</button>
+          <span class="nav-item" aria-disabled="true">Pagina de tabela</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p id="acessibilidade-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+
+  <main class="page" id="conteudo-principal">
+    <div class="container">
+      <div class="card form-card">
+        <div class="card-pad">
+          <div class="kicker"><span class="dot"></span> Registros</div>
+          <div class="headline form-headline">Clientes cadastrados</div>
+          <section class="legacy-panel" aria-labelledby="titulo-painel" aria-describedby="descricao-tabela">
+            <h2 class="sr-only" id="titulo-painel">Painel de clientes cadastrados</h2>
+            <p class="form-helper" id="descricao-tabela">
+              Informações principais dos clientes registrados no sistema.
+            </p>
+
+            <div class="legacy-header">
+              <h3 class="legacy-title">Clientes Cadastrados</h3>
+              <nav class="legacy-tabs" aria-label="Secoes da pagina de clientes">
+                <a class="legacy-tab legacy-tab-active" href="#dados-principais" aria-current="page">Dados
+                  Principais</a>
+                <a class="legacy-tab" href="#meus-clientes">Meus Clientes</a>
+              </nav>
+            </div>
+
+            <div class="legacy-toolbar" aria-label="Resumo do registro atual">
+              <div class="legacy-toolbar-field">
+                <span class="legacy-toolbar-label">Codigo atual</span>
+                <strong class="legacy-code" aria-label="Codigo do cliente atual">000001</strong>
+              </div>
+            </div>
+
+            <div class="legacy-layout">
+              <section class="legacy-main" id="dados-principais" aria-labelledby="dados-principais-titulo">
+                <h3 class="section-title section-title-no-margin" id="dados-principais-titulo">Dados principais</h3>
+
+                <div class="table-search-panel" aria-labelledby="titulo-busca">
+                  <h4 class="section-title section-title-no-margin" id="titulo-busca">Busca de clientes</h4>
+                  <div class="table-search-grid">
+                    <div class="form-group">
+                      <label class="form-label" for="filtro-tipo">Buscar por</label>
+                      <select class="form-input" id="filtro-tipo" name="filtro-tipo">
+                        <option value="codigo">Codigo do cliente</option>
+                        <option value="assunto">Assunto</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="filtro-valor">Termo da busca</label>
+                      <input class="form-input" id="filtro-valor" name="filtro-valor" type="search"
+                        placeholder="Digite o codigo ou assunto" />
+                    </div>
+                    <div class="form-group table-search-action">
+                      <button class="form-button form-button-primary" id="btn-buscar-clientes"
+                        type="button">Buscar</button>
+                    </div>
+                  </div>
+                </div>
+
+                <dl class="client-summary">
+                  <div class="summary-row summary-row-strong">
+                    <dt>Codigo</dt>
+                    <dd>000001</dd>
+                  </div>
+                  <div class="summary-row summary-row-strong">
+                    <dt>Nome completo</dt>
+                    <dd>Ana Souza</dd>
+                  </div>
+                  <div class="summary-row">
+                    <dt>Assunto</dt>
+                    <dd>Agendamento de consultas</dd>
+                  </div>
+                </dl>
+
+                <div class="legacy-grid legacy-grid-top">
+                  <div class="form-group">
+                    <label class="form-label" for="email-cliente">E-mail</label>
+                    <input class="form-input" id="email-cliente" name="email-cliente" type="email"
+                      value="ana.souza@exemplo.com" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="telefone-cliente">Telefone</label>
+                    <input class="form-input" id="telefone-cliente" name="telefone-cliente" type="tel"
+                      value="(11) 99876-4321" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="cpf-cliente">CPF</label>
+                    <input class="form-input" id="cpf-cliente" name="cpf-cliente" type="text" value="123.456.789-00" />
+                  </div>
+                </div>
+
+                <fieldset class="legacy-flags">
+                  <legend class="sr-only">Consentimentos e preferencias</legend>
+                  <label class="legacy-check">
+                    <input type="checkbox" checked />
+                    <span>Recebe novidades por e-mail</span>
+                  </label>
+                  <label class="legacy-check">
+                    <input type="checkbox" checked />
+                    <span>Autorizacao de uso dos dados confirmada</span>
+                  </label>
+                </fieldset>
+
+                <div class="legacy-grid legacy-grid-address">
+                  <div class="form-group">
+                    <label class="form-label" for="nascimento-cliente">Data de nascimento</label>
+                    <input class="form-input" id="nascimento-cliente" name="nascimento-cliente" type="text"
+                      value="25/03/1996" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="sexo-cliente">Sexo</label>
+                    <input class="form-input" id="sexo-cliente" name="sexo-cliente" type="text" value="Feminino" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="canal-preferido">Canal preferido</label>
+                    <input class="form-input" id="canal-preferido" name="canal-preferido" type="text" value="E-mail" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="anexos-enviados">Anexos enviados</label>
+                    <input class="form-input" id="anexos-enviados" name="anexos-enviados" type="text"
+                      value="2 arquivos" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="formatos-anexo">Formatos aceitos</label>
+                    <input class="form-input" id="formatos-anexo" name="formatos-anexo" type="text"
+                      value="PDF, JPG, PNG" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="limite-anexo">Tamanho maximo</label>
+                    <input class="form-input" id="limite-anexo" name="limite-anexo" type="text" value="5MB" />
+                  </div>
+                </div>
+
+                <div class="legacy-details">
+                  <div class="legacy-contacts">
+                    <div class="form-group">
+                      <label class="form-label" for="status-cadastro">Status do cadastro</label>
+                      <input class="form-input" id="status-cadastro" name="status-cadastro" type="text"
+                        value="Cadastro concluido" />
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="origem-contato">Canal confirmado</label>
+                      <input class="form-input" id="origem-contato" name="origem-contato" type="text"
+                        value="E-mail confirmado no formulario" />
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="recursos-acessibilidade">Recursos de acessibilidade</label>
+                      <input class="form-input" id="recursos-acessibilidade" name="recursos-acessibilidade" type="text"
+                        value="Atendimento prioritario solicitado nas observacoes" />
+                    </div>
+
+                    <div class="legacy-date-card">
+                      <span class="legacy-date-label">Data do cadastro</span>
+                      <strong>01/04/2026</strong>
+                      <span class="legacy-date-label">Ultima atualizacao</span>
+                      <strong>04/04/2026</strong>
+                    </div>
+                  </div>
+
+                  <div class="legacy-notes">
+                    <h4 class="section-title section-title-no-margin">Observacoes do cadastro</h4>
+                    <p class="table-note">
+                      Cliente informou preferencia por atendimento prioritario, confirmou o recebimento de novidades por
+                      e-mail e anexou documentos para agilizar a analise.
+                    </p>
+                  </div>
+                </div>
+
+                <section class="category-panel" aria-labelledby="titulo-categorias">
+                  <h4 class="section-title section-title-no-margin" id="titulo-categorias">Lista por categoria de
+                    atendimento</h4>
+                  <ul class="category-list">
+                    <li><strong>Agendamento de consultas:</strong> Ana Souza, Gustavo Neri</li>
+                    <li><strong>Resultados de exames:</strong> Bruno Lima, Helena Costa</li>
+                    <li><strong>Informacoes sobre internacao:</strong> Carla Mendes</li>
+                    <li><strong>Pronto-atendimento / Urgencia:</strong> Diego Rocha</li>
+                    <li><strong>Sugestoes ou reclamacoes:</strong> Fernanda Alves</li>
+                  </ul>
+                </section>
+              </section>
+
+              <aside class="legacy-sidebar" aria-label="Acoes do cadastro">
+                <button class="legacy-action" type="button">Remover cliente</button>
+                <button class="legacy-action" type="button">Mala direta</button>
+                <button class="legacy-action" type="button">Relatorio</button>
+              </aside>
+            </div>
+
+            <section class="table-section" id="meus-clientes" aria-labelledby="titulo-tabela">
+              <h3 class="section-title" id="titulo-tabela">Meus clientes</h3>
+              <div class="table-wrapper" tabindex="0" role="region" aria-labelledby="caption-clientes"
+                aria-describedby="descricao-tabela">
+                <table class="data-table" id="tabela-clientes">
+                  <caption id="caption-clientes">Resumo dos clientes cadastrados e seus canais de contato preferidos
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Codigo</th>
+                      <th scope="col">Nome</th>
+                      <th scope="col">E-mail</th>
+                      <th scope="col">Telefone</th>
+                      <th scope="col">CPF</th>
+                      <th scope="col">Canal preferido</th>
+                      <th scope="col">Assunto</th>
+                      <th scope="col">Anexos</th>
+                      <th scope="col">Consentimento</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-codigo="000001" data-assunto="agendamento de consultas">
+                      <td>000001</td>
+                      <th scope="row">Ana Souza</th>
+                      <td>ana.souza@exemplo.com</td>
+                      <td>(11) 99876-4321</td>
+                      <td>123.456.789-00</td>
+                      <td>E-mail</td>
+                      <td>Agendamento de consultas</td>
+                      <td>2 arquivos</td>
+                      <td><span class="status-badge status-ok">Confirmado</span></td>
+                    </tr>
+                    <tr data-codigo="000002" data-assunto="resultados de exames">
+                      <td>000002</td>
+                      <th scope="row">Bruno Lima</th>
+                      <td>bruno.lima@exemplo.com</td>
+                      <td>(11) 98765-2109</td>
+                      <td>987.654.321-00</td>
+                      <td>WhatsApp</td>
+                      <td>Resultados de exames</td>
+                      <td>1 arquivo</td>
+                      <td><span class="status-badge status-ok">Confirmado</span></td>
+                    </tr>
+                    <tr data-codigo="000003" data-assunto="informacoes sobre internacao">
+                      <td>000003</td>
+                      <th scope="row">Carla Mendes</th>
+                      <td>carla.mendes@exemplo.com</td>
+                      <td>(11) 97654-1098</td>
+                      <td>654.321.987-00</td>
+                      <td>Telefone</td>
+                      <td>Informacoes sobre internacao</td>
+                      <td>Nenhum</td>
+                      <td><span class="status-badge status-warn">Pendente</span></td>
+                    </tr>
+                    <tr data-codigo="000004" data-assunto="pronto-atendimento / urgencia">
+                      <td>000004</td>
+                      <th scope="row">Diego Rocha</th>
+                      <td>diego.rocha@exemplo.com</td>
+                      <td>(11) 96543-5678</td>
+                      <td>321.654.987-00</td>
+                      <td>E-mail</td>
+                      <td>Pronto-atendimento / Urgencia</td>
+                      <td>3 arquivos</td>
+                      <td><span class="status-badge status-info">Em analise</span></td>
+                    </tr>
+                    <tr data-codigo="000005" data-assunto="sugestoes ou reclamacoes">
+                      <td>000005</td>
+                      <th scope="row">Fernanda Alves</th>
+                      <td>fernanda.alves@exemplo.com</td>
+                      <td>(11) 95432-8765</td>
+                      <td>741.852.963-00</td>
+                      <td>WhatsApp</td>
+                      <td>Sugestoes ou reclamacoes</td>
+                      <td>1 arquivo</td>
+                      <td><span class="status-badge status-ok">Confirmado</span></td>
+                    </tr>
+                    <tr data-codigo="000006" data-assunto="agendamento de consultas">
+                      <td>000006</td>
+                      <th scope="row">Gustavo Neri</th>
+                      <td>gustavo.neri@exemplo.com</td>
+                      <td>(11) 94321-7654</td>
+                      <td>159.357.486-00</td>
+                      <td>Telefone</td>
+                      <td>Agendamento de consultas</td>
+                      <td>Nenhum</td>
+                      <td><span class="status-badge status-warn">Pendente</span></td>
+                    </tr>
+                    <tr data-codigo="000007" data-assunto="resultados de exames">
+                      <td>000007</td>
+                      <th scope="row">Helena Costa</th>
+                      <td>helena.costa@exemplo.com</td>
+                      <td>(11) 93210-6543</td>
+                      <td>258.369.147-00</td>
+                      <td>E-mail</td>
+                      <td>Resultados de exames</td>
+                      <td>2 arquivos</td>
+                      <td><span class="status-badge status-info">Em analise</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </section>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="container">
+          2026 - Sistema de Cadastro de Clientes - Acessibilidade - Tabela em pagina dedicada
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
