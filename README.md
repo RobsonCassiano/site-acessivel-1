@@ -3,7 +3,7 @@
 
 2. Adicionar atributos ARIA, para dar contexto aos leitores de tela, como:
 
-# aria-labelledby
-# aria-required
-# aria-describedby
-# aria-label
+* aria-labelledby
+* aria-required
+* aria-describedby
+* aria-label
