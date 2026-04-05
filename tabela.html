@@ -10,31 +10,31 @@
 </head>
 
 <body>
-  <a class="skip-link" href="#conteudo-principal">Pular para o conteudo principal</a>
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
 
-  <div class="topbar">
+  <header class="topbar" aria-label="Cabeçalho principal">
     <div class="container">
       <div class="topbar-inner">
         <div class="brand">
-          <div class="brand-title">
-            <div class="name">Tabela de clientes</div>
-            <div class="tagline">Estrutura semantica com foco em acessibilidade e leitura assistiva</div>
-          </div>
+          <section class="brand-title" aria-labelledby="titulo-pagina-tabela" aria-describedby="descricao-pagina-tabela">
+            <h1 class="name" id="titulo-pagina-tabela">Tabela de clientes</h1>
+            <p class="tagline" id="descricao-pagina-tabela">Estrutura semântica com foco em acessibilidade e leitura assistiva</p>
+          </section>
         </div>
 
-        <div class="tools">
-          <a class="nav-item" href="index.html">Pagina de cadastro</a>
+        <nav class="tools" aria-label="Acessos rápidos e recursos de acessibilidade">
+          <a class="nav-item" href="index.html">Página de cadastro</a>
           <button class="nav-item" id="btn-diminuir" title="Diminuir fonte"
             aria-label="Diminuir tamanho da fonte">A-</button>
           <button class="nav-item" id="btn-aumentar" title="Aumentar fonte"
             aria-label="Aumentar tamanho da fonte">A+</button>
           <button class="nav-item" id="btn-contraste" title="Alternar modo alto contraste"
             aria-pressed="false">Contraste</button>
-          <span class="nav-item" aria-disabled="true">Pagina de tabela</span>
-        </div>
+          <span class="nav-item" aria-disabled="true">Página tabela de registros</span>
+        </nav>
       </div>
     </div>
-  </div>
+  </header>
 
   <p id="acessibilidade-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
 
@@ -52,7 +52,7 @@
 
             <div class="legacy-header">
               <h3 class="legacy-title">Clientes Cadastrados</h3>
-              <nav class="legacy-tabs" aria-label="Secoes da pagina de clientes">
+              <nav class="legacy-tabs" aria-label="Seções da página de clientes">
                 <a class="legacy-tab legacy-tab-active" href="#dados-principais" aria-current="page">Dados
                   Principais</a>
                 <a class="legacy-tab" href="#meus-clientes">Meus Clientes</a>
@@ -61,8 +61,8 @@
 
             <div class="legacy-toolbar" aria-label="Resumo do registro atual">
               <div class="legacy-toolbar-field">
-                <span class="legacy-toolbar-label">Codigo atual</span>
-                <strong class="legacy-code" aria-label="Codigo do cliente atual">000001</strong>
+                <span class="legacy-toolbar-label">Código atual</span>
+                <strong class="legacy-code" aria-label="Código do cliente atual">000001</strong>
               </div>
             </div>
 
@@ -70,31 +70,32 @@
               <section class="legacy-main" id="dados-principais" aria-labelledby="dados-principais-titulo">
                 <h3 class="section-title section-title-no-margin" id="dados-principais-titulo">Dados principais</h3>
 
-                <div class="table-search-panel" aria-labelledby="titulo-busca">
+                <div class="table-search-panel" aria-labelledby="titulo-busca" aria-describedby="ajuda-busca-clientes">
                   <h4 class="section-title section-title-no-margin" id="titulo-busca">Busca de clientes</h4>
+                  <p class="form-hint" id="ajuda-busca-clientes">Use Tab para navegar pelos filtros e localizar clientes por código ou assunto.</p>
                   <div class="table-search-grid">
                     <div class="form-group">
                       <label class="form-label" for="filtro-tipo">Buscar por</label>
-                      <select class="form-input" id="filtro-tipo" name="filtro-tipo">
-                        <option value="codigo">Codigo do cliente</option>
+                      <select class="form-input" id="filtro-tipo" name="filtro-tipo" aria-describedby="ajuda-busca-clientes">
+                        <option value="codigo">Código do cliente</option>
                         <option value="assunto">Assunto</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label class="form-label" for="filtro-valor">Termo da busca</label>
                       <input class="form-input" id="filtro-valor" name="filtro-valor" type="search"
-                        placeholder="Digite o codigo ou assunto" />
+                        placeholder="Digite o código ou assunto" aria-describedby="ajuda-busca-clientes" />
                     </div>
                     <div class="form-group table-search-action">
                       <button class="form-button form-button-primary" id="btn-buscar-clientes"
-                        type="button">Buscar</button>
+                        type="button" aria-label="Buscar clientes na tabela">Buscar</button>
                     </div>
                   </div>
                 </div>
 
                 <dl class="client-summary">
                   <div class="summary-row summary-row-strong">
-                    <dt>Codigo</dt>
+                    <dt>Código</dt>
                     <dd>000001</dd>
                   </div>
                   <div class="summary-row summary-row-strong">
@@ -125,14 +126,14 @@
                 </div>
 
                 <fieldset class="legacy-flags">
-                  <legend class="sr-only">Consentimentos e preferencias</legend>
+                  <legend class="sr-only">Consentimentos e preferências</legend>
                   <label class="legacy-check">
                     <input type="checkbox" checked />
                     <span>Recebe novidades por e-mail</span>
                   </label>
                   <label class="legacy-check">
                     <input type="checkbox" checked />
-                    <span>Autorizacao de uso dos dados confirmada</span>
+                    <span>Autorização de uso dos dados confirmada</span>
                   </label>
                 </fieldset>
 
@@ -161,7 +162,7 @@
                       value="PDF, JPG, PNG" />
                   </div>
                   <div class="form-group">
-                    <label class="form-label" for="limite-anexo">Tamanho maximo</label>
+                    <label class="form-label" for="limite-anexo">Tamanho máximo</label>
                     <input class="form-input" id="limite-anexo" name="limite-anexo" type="text" value="5MB" />
                   </div>
                 </div>
@@ -171,32 +172,32 @@
                     <div class="form-group">
                       <label class="form-label" for="status-cadastro">Status do cadastro</label>
                       <input class="form-input" id="status-cadastro" name="status-cadastro" type="text"
-                        value="Cadastro concluido" />
+                        value="Cadastro concluído" />
                     </div>
                     <div class="form-group">
                       <label class="form-label" for="origem-contato">Canal confirmado</label>
                       <input class="form-input" id="origem-contato" name="origem-contato" type="text"
-                        value="E-mail confirmado no formulario" />
+                        value="E-mail confirmado no formulário" />
                     </div>
                     <div class="form-group">
                       <label class="form-label" for="recursos-acessibilidade">Recursos de acessibilidade</label>
                       <input class="form-input" id="recursos-acessibilidade" name="recursos-acessibilidade" type="text"
-                        value="Atendimento prioritario solicitado nas observacoes" />
+                        value="Atendimento prioritário solicitado nas observações" />
                     </div>
 
                     <div class="legacy-date-card">
                       <span class="legacy-date-label">Data do cadastro</span>
                       <strong>01/04/2026</strong>
-                      <span class="legacy-date-label">Ultima atualizacao</span>
+                      <span class="legacy-date-label">Última atualização</span>
                       <strong>04/04/2026</strong>
                     </div>
                   </div>
 
                   <div class="legacy-notes">
-                    <h4 class="section-title section-title-no-margin">Observacoes do cadastro</h4>
+                    <h4 class="section-title section-title-no-margin">Observações do cadastro</h4>
                     <p class="table-note">
-                      Cliente informou preferencia por atendimento prioritario, confirmou o recebimento de novidades por
-                      e-mail e anexou documentos para agilizar a analise.
+                      Cliente informou preferência por atendimento prioritário, confirmou o recebimento de novidades por
+                      e-mail e anexou documentos para agilizar a análise.
                     </p>
                   </div>
                 </div>
@@ -207,17 +208,17 @@
                   <ul class="category-list">
                     <li><strong>Agendamento de consultas:</strong> Ana Souza, Gustavo Neri</li>
                     <li><strong>Resultados de exames:</strong> Bruno Lima, Helena Costa</li>
-                    <li><strong>Informacoes sobre internacao:</strong> Carla Mendes</li>
-                    <li><strong>Pronto-atendimento / Urgencia:</strong> Diego Rocha</li>
-                    <li><strong>Sugestoes ou reclamacoes:</strong> Fernanda Alves</li>
+                    <li><strong>Informações sobre internação:</strong> Carla Mendes</li>
+                    <li><strong>Pronto-atendimento / Urgência:</strong> Diego Rocha</li>
+                    <li><strong>Sugestões ou reclamações:</strong> Fernanda Alves</li>
                   </ul>
                 </section>
               </section>
 
-              <aside class="legacy-sidebar" aria-label="Acoes do cadastro">
-                <button class="legacy-action" type="button">Remover cliente</button>
-                <button class="legacy-action" type="button">Mala direta</button>
-                <button class="legacy-action" type="button">Relatorio</button>
+              <aside class="legacy-sidebar" aria-label="Ações do cadastro">
+                <button class="legacy-action" type="button" aria-label="Remover o cliente selecionado">Remover cliente</button>
+                <button class="legacy-action" type="button" aria-label="Criar mala direta para os clientes">Mala direta</button>
+                <button class="legacy-action" type="button" aria-label="Gerar relatório de clientes">Relatorio</button>
               </aside>
             </div>
 
@@ -225,12 +226,12 @@
               <h3 class="section-title" id="titulo-tabela">Meus clientes</h3>
               <div class="table-wrapper" tabindex="0" role="region" aria-labelledby="caption-clientes"
                 aria-describedby="descricao-tabela">
-                <table class="data-table" id="tabela-clientes">
+                <table class="data-table" id="tabela-clientes" aria-describedby="descricao-tabela">
                   <caption id="caption-clientes">Resumo dos clientes cadastrados e seus canais de contato preferidos
                   </caption>
                   <thead>
                     <tr>
-                      <th scope="col">Codigo</th>
+                      <th scope="col">Código</th>
                       <th scope="col">Nome</th>
                       <th scope="col">E-mail</th>
                       <th scope="col">Telefone</th>
@@ -271,7 +272,7 @@
                       <td>(11) 97654-1098</td>
                       <td>654.321.987-00</td>
                       <td>Telefone</td>
-                      <td>Informacoes sobre internacao</td>
+                      <td>Informações sobre internação</td>
                       <td>Nenhum</td>
                       <td><span class="status-badge status-warn">Pendente</span></td>
                     </tr>
@@ -282,9 +283,9 @@
                       <td>(11) 96543-5678</td>
                       <td>321.654.987-00</td>
                       <td>E-mail</td>
-                      <td>Pronto-atendimento / Urgencia</td>
+                      <td>Pronto-atendimento / Urgência</td>
                       <td>3 arquivos</td>
-                      <td><span class="status-badge status-info">Em analise</span></td>
+                      <td><span class="status-badge status-info">Em análise</span></td>
                     </tr>
                     <tr data-codigo="000005" data-assunto="sugestoes ou reclamacoes">
                       <td>000005</td>
@@ -293,7 +294,7 @@
                       <td>(11) 95432-8765</td>
                       <td>741.852.963-00</td>
                       <td>WhatsApp</td>
-                      <td>Sugestoes ou reclamacoes</td>
+                      <td>Sugestões ou reclamações</td>
                       <td>1 arquivo</td>
                       <td><span class="status-badge status-ok">Confirmado</span></td>
                     </tr>
@@ -317,7 +318,7 @@
                       <td>E-mail</td>
                       <td>Resultados de exames</td>
                       <td>2 arquivos</td>
-                      <td><span class="status-badge status-info">Em analise</span></td>
+                      <td><span class="status-badge status-info">Em análise</span></td>
                     </tr>
                   </tbody>
                 </table>
@@ -327,11 +328,11 @@
         </div>
       </div>
 
-      <div class="footer">
+      <footer class="footer" aria-label="Rodapé da página">
         <div class="container">
           2026 - Sistema de Cadastro de Clientes - Acessibilidade - Tabela em pagina dedicada
         </div>
-      </div>
+      </footer>
     </div>
   </main>
 </body>
