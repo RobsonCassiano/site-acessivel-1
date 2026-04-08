@@ -22,15 +22,21 @@
           </section>
         </div>
 
-        <nav class="tools" aria-label="Acessos rápidos e recursos de acessibilidade">
-          <a class="nav-item" href="index.html">Página de cadastro</a>
-          <button class="nav-item" id="btn-diminuir" title="Diminuir fonte"
-            aria-label="Diminuir tamanho da fonte">A-</button>
-          <button class="nav-item" id="btn-aumentar" title="Aumentar fonte"
-            aria-label="Aumentar tamanho da fonte">A+</button>
-          <button class="nav-item" id="btn-contraste" title="Alternar modo alto contraste"
-            aria-pressed="false">Contraste</button>
-          <span class="nav-item" aria-disabled="true">Página tabela de registros</span>
+        <nav class="site-nav" aria-label="Navegação principal e recursos de acessibilidade">
+          <ul class="site-nav-links">
+            <li><a class="site-nav-link" href="inicio.html">Início</a></li>
+            <li><a class="site-nav-link" href="index.html">Formulário</a></li>
+            <li><a class="site-nav-link" href="tabela.html" aria-current="page">Tabela</a></li>
+          </ul>
+
+          <div class="site-nav-tools" aria-label="Recursos de acessibilidade">
+            <button class="nav-item" id="btn-diminuir" title="Diminuir fonte"
+              aria-label="Diminuir tamanho da fonte">A-</button>
+            <button class="nav-item" id="btn-aumentar" title="Aumentar fonte"
+              aria-label="Aumentar tamanho da fonte">A+</button>
+            <button class="nav-item" id="btn-contraste" title="Alternar modo alto contraste"
+              aria-pressed="false">Contraste</button>
+          </div>
         </nav>
       </div>
     </div>
@@ -85,6 +91,14 @@
                       <label class="form-label" for="filtro-valor">Termo da busca</label>
                       <input class="form-input" id="filtro-valor" name="filtro-valor" type="search"
                         placeholder="Digite o código ou assunto" aria-describedby="ajuda-busca-clientes" />
+                      <select class="form-input" id="filtro-assunto" name="filtro-assunto" aria-describedby="ajuda-busca-clientes" hidden>
+                        <option value="">Selecione um assunto</option>
+                        <option value="agendamento">Agendamento de consultas</option>
+                        <option value="exames">Resultados de exames</option>
+                        <option value="internacao">Informações sobre internação</option>
+                        <option value="urgencia">Pronto-atendimento / Urgência</option>
+                        <option value="ouvidoria">Sugestões ou reclamações</option>
+                      </select>
                     </div>
                     <div class="form-group table-search-action">
                       <button class="form-button form-button-primary" id="btn-buscar-clientes"
@@ -93,20 +107,35 @@
                   </div>
                 </div>
 
-                <dl class="client-summary">
+                <div class="table-search-results">
+                  <h4 class="section-title section-title-no-margin">Resultado da busca</h4>
+                  <dl class="client-summary">
                   <div class="summary-row summary-row-strong">
                     <dt>Código</dt>
-                    <dd>000001</dd>
+                    <dd id="resultado-codigo">000001</dd>
                   </div>
                   <div class="summary-row summary-row-strong">
                     <dt>Nome completo</dt>
-                    <dd>Ana Souza</dd>
+                    <dd id="resultado-nome">Ana Souza</dd>
                   </div>
                   <div class="summary-row">
                     <dt>Assunto</dt>
-                    <dd>Agendamento de consultas</dd>
+                    <dd id="resultado-assunto">Agendamento de consultas</dd>
                   </div>
-                </dl>
+                  <div class="summary-row">
+                    <dt>E-mail</dt>
+                    <dd id="resultado-email">ana.souza@exemplo.com</dd>
+                  </div>
+                  <div class="summary-row">
+                    <dt>Telefone</dt>
+                    <dd id="resultado-telefone">(11) 99876-4321</dd>
+                  </div>
+                  <div class="summary-row">
+                    <dt>CPF</dt>
+                    <dd id="resultado-cpf">123.456.789-00</dd>
+                  </div>
+                  </dl>
+                </div>
 
                 <div class="legacy-grid legacy-grid-top">
                   <div class="form-group">
@@ -216,9 +245,9 @@
               </section>
 
               <aside class="legacy-sidebar" aria-label="Ações do cadastro">
-                <button class="legacy-action" type="button" aria-label="Remover o cliente selecionado">Remover cliente</button>
-                <button class="legacy-action" type="button" aria-label="Criar mala direta para os clientes">Mala direta</button>
-                <button class="legacy-action" type="button" aria-label="Gerar relatório de clientes">Relatorio</button>
+                <button class="legacy-action" id="btn-remover-cliente" type="button" aria-label="Remover o cliente selecionado">Remover cliente</button>
+                <button class="legacy-action" id="btn-mala-direta" type="button" aria-label="Criar mala direta para os clientes">Mala direta</button>
+                <button class="legacy-action" id="btn-relatorio-clientes" type="button" aria-label="Gerar relatório de clientes">Relatorio</button>
               </aside>
             </div>
 

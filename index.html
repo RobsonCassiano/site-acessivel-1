@@ -20,12 +20,18 @@
           </section>
         </div>
 
-        <nav class="tools" aria-label="Acessos rápidos e recursos de acessibilidade">
-          <a class="nav-item" href="tabela.html">Página tabela de registros</a>
-          <button class="nav-item" id="btn-diminuir" title="Diminuir fonte" aria-label="Diminuir tamanho da fonte">A-</button>
-          <button class="nav-item" id="btn-aumentar" title="Aumentar fonte" aria-label="Aumentar tamanho da fonte">A+</button>
-          <button class="nav-item" id="btn-contraste" title="Alternar modo alto contraste" aria-pressed="false">Contraste</button>
-          <span class="nav-item" aria-disabled="true">Página de cadastro</span>
+        <nav class="site-nav" aria-label="Navegação principal e recursos de acessibilidade">
+          <ul class="site-nav-links">
+            <li><a class="site-nav-link" href="inicio.html">Início</a></li>
+            <li><a class="site-nav-link" href="index.html" aria-current="page">Formulário</a></li>
+            <li><a class="site-nav-link" href="tabela.html">Tabela</a></li>
+          </ul>
+
+          <div class="site-nav-tools" aria-label="Recursos de acessibilidade">
+            <button class="nav-item" id="btn-diminuir" title="Diminuir fonte" aria-label="Diminuir tamanho da fonte">A-</button>
+            <button class="nav-item" id="btn-aumentar" title="Aumentar fonte" aria-label="Aumentar tamanho da fonte">A+</button>
+            <button class="nav-item" id="btn-contraste" title="Alternar modo alto contraste" aria-pressed="false">Contraste</button>
+          </div>
         </nav>
       </div>
     </div>

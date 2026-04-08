@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Aplicacao</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
+
+    <header class="topbar" aria-label="Cabeçalho principal">
+        <div class="container">
+            <div class="topbar-inner">
+                <div class="brand">
+                    <section class="brand-title" aria-labelledby="titulo-pagina-inicio">
+                        <h1 class="name" id="titulo-pagina-inicio">Minha Aplicação</h1>
+                    </section>
+                </div>
+
+                <nav class="site-nav" aria-label="Navegação principal e recursos de acessibilidade">
+                    <ul class="site-nav-links">
+                        <li><a class="site-nav-link" href="inicio.html" aria-current="page">Início</a></li>
+                        <li><a class="site-nav-link" href="index.html">Formulário</a></li>
+                        <li><a class="site-nav-link" href="tabela.html">Tabela</a></li>
+                    </ul>
+
+                    <div class="site-nav-tools" aria-label="Recursos de acessibilidade">
+                        <button class="nav-item" id="btn-diminuir" title="Diminuir fonte" aria-label="Diminuir tamanho da fonte">A-</button>
+                        <button class="nav-item" id="btn-aumentar" title="Aumentar fonte" aria-label="Aumentar tamanho da fonte">A+</button>
+                        <button class="nav-item" id="btn-contraste" title="Alternar modo alto contraste" aria-pressed="false">Contraste</button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <p id="acessibilidade-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+
+    <main class="page" id="conteudo-principal">
+        <div class="container">
+            <div class="card form-card">
+                <div class="card-pad">
+                    <div class="kicker"><span class="dot"></span> Apresentação</div>
+                    <div class="headline form-headline">Bem-vindo ao sistema</div>
+                    <p class="subhead form-subhead">
+                        Navegue entre o formulário de cadastro e a tabela de registros usando o menu no topo. Os controles de fonte e contraste também estão disponíveis nesta página.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
