@@ -967,6 +967,18 @@ body.alto-contraste #btn-contraste {
   font-weight: 700 !important;
 }
 
+body.alto-contraste .topbar {
+  background: #000000 !important;
+  border-bottom-color: #ffff00 !important;
+}
+
+body.alto-contraste .brand-title .name,
+body.alto-contraste .brand-title .tagline,
+body.alto-contraste .site-nav-link,
+body.alto-contraste .nav-item {
+  color: #ffffff !important;
+}
+
 body.alto-contraste .form-helper,
 body.alto-contraste .form-fieldset,
 body.alto-contraste .form-input,
@@ -1008,11 +1020,11 @@ body.alto-contraste .legacy-date-card,
 body.alto-contraste .table-wrapper,
 body.alto-contraste .data-table thead th,
 body.alto-contraste .data-table tbody tr:nth-child(even) {
-  background: rgba(255, 255, 255, 0.06) !important;
+  background: #111111 !important;
 }
 
 body.alto-contraste .form-button-primary {
-  background: rgba(255, 255, 0, 0.2) !important;
+  background: #222200 !important;
   color: #ffff00 !important;
 }
 
@@ -1021,6 +1033,67 @@ body.alto-contraste .legacy-code,
 body.alto-contraste .legacy-tab,
 body.alto-contraste .legacy-action {
   color: #ffff00 !important;
+}
+
+body.alto-contraste .tagline,
+body.alto-contraste .form-hint,
+body.alto-contraste .table-note,
+body.alto-contraste .legacy-toolbar-label,
+body.alto-contraste .site-nav-link,
+body.alto-contraste .upload-text,
+body.alto-contraste .upload-help-text,
+body.alto-contraste .upload-link,
+body.alto-contraste .data-table td,
+body.alto-contraste .data-table tbody th,
+body.alto-contraste .summary-row dt,
+body.alto-contraste .legacy-check span,
+body.alto-contraste .category-list,
+body.alto-contraste .category-list strong,
+body.alto-contraste .section-title,
+body.alto-contraste .section-title-no-margin {
+  color: #ffffff !important;
+}
+
+body.alto-contraste .legacy-tab,
+body.alto-contraste .site-nav-link[aria-current="page"],
+body.alto-contraste .legacy-tab-active,
+body.alto-contraste .nav-item {
+  background: #000000 !important;
+  border-color: #ffff00 !important;
+}
+
+body.alto-contraste .site-nav-link {
+  background: transparent !important;
+}
+
+body.alto-contraste .site-nav-link:hover,
+body.alto-contraste .site-nav-link:focus,
+body.alto-contraste .nav-item:hover,
+body.alto-contraste .nav-item:focus {
+  color: #ffff00 !important;
+  outline-color: rgba(255, 255, 0, 0.45) !important;
+}
+
+body.alto-contraste .legacy-tab-active,
+body.alto-contraste .site-nav-link[aria-current="page"] {
+  color: #ffff00 !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 0, 0.25) inset !important;
+}
+
+body.alto-contraste .table-search-panel,
+body.alto-contraste .category-panel,
+body.alto-contraste .client-summary,
+body.alto-contraste .summary-row dd {
+  background: #000000 !important;
+}
+
+body.alto-contraste .data-table tbody tr:hover,
+body.alto-contraste .data-table tbody tr.is-selected {
+  background: #1f1f00 !important;
+}
+
+body.alto-contraste .form-input::placeholder {
+  color: #d9d9d9 !important;
 }
 
 body.alto-contraste .status-badge {
